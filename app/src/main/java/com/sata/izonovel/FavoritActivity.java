@@ -4,13 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class DaftarNovelActivity extends AppCompatActivity {
+public class FavoritActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_daftar_novel);
+        setContentView(R.layout.activity_favorit);
 
-        setTitle(R.string.title_daftar_novel);
+        //setTitle(R.string.title_favorite);
     }
 }
