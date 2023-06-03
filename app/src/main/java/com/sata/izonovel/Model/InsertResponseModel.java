@@ -1,6 +1,6 @@
 package com.sata.izonovel.Model;
 
-public class RegisterModel {
+public class InsertResponseModel {
     public String getInsertedId() {
         return insertedId;
     }
@@ -9,6 +9,5 @@ public class RegisterModel {
         this.insertedId = insertedId;
     }
 
-    private String insertedId;
-
+    private  String insertedId;
 }

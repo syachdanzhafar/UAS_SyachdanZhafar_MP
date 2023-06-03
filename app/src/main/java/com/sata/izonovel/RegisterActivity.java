@@ -1,15 +1,20 @@
 package com.sata.izonovel;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
+
+import com.sata.izonovel.Model.InsertResponseModel;
+import com.sata.izonovel.Model.RegisterRequestModel;
+import com.sata.izonovel.Retrofit.APIService;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class RegisterActivity extends AppCompatActivity {
     EditText etFirstname, etLastName, etPassword, etEmail;
@@ -36,24 +41,31 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private  void  onSubmitRegister(){
-        Log.d("FIRST_NAME",etFirstname.getText().toString());
-        Log.d("LAST_NAME",etLastName.getText().toString());
-        Log.d("EMAIL",etEmail.getText().toString());
-        Log.d("PASSWORD",etPassword.getText().toString());
+        RegisterRequestModel registerRequestModel = new RegisterRequestModel();
+        registerRequestModel.setDataSource("Cluster0");
+        registerRequestModel.setDatabase("izonovel");
+        registerRequestModel.setCollection("users");
 
-        String pesan = etFirstname.getText().toString();
-        Toast.makeText(this,pesan,Toast.LENGTH_LONG ).show();
+        RegisterRequestModel.Document document = new RegisterRequestModel.Document();
+        String FullName = etFirstname.getText().toString() +" "+ etLastName.getText().toString();
+        document.setFullName(FullName);
+        document.setUsername(etEmail.getText().toString());
+        document.setPassword(etPassword.getText().toString());
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(this)
-                .setTitle("INFO")
-                .setMessage("isi pesan")
-                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
+        registerRequestModel.setDocument(document);
 
-                    }
-                });
-        builder.show();
+
+        APIService.endpoint().registerUser(registerRequestModel).enqueue(new Callback<InsertResponseModel>() {
+            @Override
+            public void onResponse(Call<InsertResponseModel> call, Response<InsertResponseModel> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<InsertResponseModel> call, Throwable t) {
+                Log.d("TES GAGAL", t.toString());
+            }
+        });
     }
 
 }
