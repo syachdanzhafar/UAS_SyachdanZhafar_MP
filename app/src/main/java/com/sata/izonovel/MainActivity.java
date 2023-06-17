@@ -12,7 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    TextView menuFavorite, menuInfoPengguna, menuDaftarNovel;
+    TextView menuFavorite, menuInfoPengguna, menuDaftarNovel, menuInputNovel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,5 +47,16 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+        menuInputNovel = findViewById(R.id.tvInputNovel);
+        menuInputNovel.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                Intent intent = new Intent(MainActivity.this, FormInptActivity.class);
+                startActivity(intent);
+                return false;
+            }
+        });
+
     }
 }
