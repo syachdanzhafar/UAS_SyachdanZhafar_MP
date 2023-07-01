@@ -24,7 +24,7 @@ import retrofit2.Response;
 
 public class FormInptActivity extends AppCompatActivity {
     String[] genre = {"Action", "Romance", "Fantasi", "Horor", "Comedy", "Sci-fi"};
-    TextInputEditText Judul, Pengarang, Penerbit, Tahunterbit, Sinopsis;
+    TextInputEditText Judul, Pengarang, Penerbit, Tahunterbit, Sinopsis, ImgUrl;
     AutoCompleteTextView Genre;
     Button simpanNovel;
 
@@ -35,6 +35,7 @@ public class FormInptActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_form_inpt);
+        setTitle("Add New Novel");
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>
                 (this, android.R.layout.select_dialog_item, genre);
@@ -50,14 +51,14 @@ public class FormInptActivity extends AppCompatActivity {
         Genre= findViewById(R.id.act_genre);
         Sinopsis= findViewById(R.id.met_sinopsis);
         simpanNovel= findViewById(R.id.save_novel);
+        ImgUrl = findViewById(R.id.met_img_url);
 
-simpanNovel.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        onsavenovel();
-
-    }
-});
+        simpanNovel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onsavenovel();
+            }
+        });
 
 
 
@@ -74,6 +75,7 @@ simpanNovel.setOnClickListener(new View.OnClickListener() {
         document.setTahunTerbit(Tahunterbit.getText().toString());
         document.setGenre(Genre.getText().toString());
         document.setSinopsis(Sinopsis.getText().toString());
+        document.setGambar(ImgUrl.getText().toString());
         insertNovelModel.setDocument(document);
 
         progressDialog = new ProgressDialog(this);
@@ -97,6 +99,7 @@ simpanNovel.setOnClickListener(new View.OnClickListener() {
                         Tahunterbit.setText("");
                         Genre.setText("");
                         Sinopsis.setText("");
+                        ImgUrl.setText("");
                     }
                 });
 

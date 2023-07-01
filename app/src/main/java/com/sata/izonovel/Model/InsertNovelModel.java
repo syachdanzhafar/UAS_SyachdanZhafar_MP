@@ -42,6 +42,16 @@ public class InsertNovelModel {
         private String judul;
         private String pengarang;
         private String penerbit;
+        private String gambar;
+
+        public String getGambar() {
+            return gambar;
+        }
+
+        public void setGambar(String gambar) {
+            this.gambar = gambar;
+        }
+
 
         public String getJudul() {
             return judul;

@@ -78,6 +78,14 @@ public class ListNovelResponseModel {
             this.judul = judul;
         }
 
+        public String getGambar() {
+            return gambar;
+        }
+
+        public void setGambar(String gambar) {
+            this.gambar = gambar;
+        }
+
         private  String _id;
         private  String genre;
 
@@ -87,8 +95,7 @@ public class ListNovelResponseModel {
         private  String pengarang;
         private  String sinopsis;
         private  String tahunTerbit;
-
-
+        private String gambar;
 
     }
 }
