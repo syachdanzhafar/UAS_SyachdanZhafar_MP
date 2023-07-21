@@ -1,5 +1,7 @@
 package com.sata.izonovel.Retrofit;
 
+import com.sata.izonovel.Model.FavoriteNovelRequest;
+import com.sata.izonovel.Model.FavoriteNovelResponse;
 import com.sata.izonovel.Model.InsertNovelModel;
 import com.sata.izonovel.Model.InsertResponseModel;
 import com.sata.izonovel.Model.ListNovelRequestModel;
@@ -34,6 +36,9 @@ public interface ApiEndpoint
     @POST("app/data-yvczw/endpoint/data/v1/action/find")
     Call<ListNovelResponseModel> litDaftarNovel(@Body ListNovelRequestModel listNovelRequestModel);
 
+    @Headers({"api-key:" + API_KEY, "Content-Type:application/json"})
+    @POST("app/data-yvczw/endpoint/data/v1/action/find")
+    Call<FavoriteNovelResponse> FavNovel(@Body FavoriteNovelRequest favoriteNovelRequest);
 
 
 

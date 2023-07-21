@@ -2,28 +2,18 @@ package com.sata.izonovel.Model;
 
 import java.util.List;
 
-public class FavoriteResponseModel {
 
-    public List<Document> getDocuments() {
-        return documents;
-    }
+public class FavoriteNovelResponse {public List<FavoriteNovelResponse.Documents> getDocuments() {
+    return documents;
+}
 
-    public void setDocuments(List<Document> documents) {
+    public void setDocuments(List<FavoriteNovelResponse.Documents> documents) {
         this.documents = documents;
     }
 
-    private List<Document> documents;
-    public static class Document {
+    private List<FavoriteNovelResponse.Documents> documents;
 
-        private  String _id;
-        private  String genre;
-        private  String judul;
-        private  String penerbit;
-        private  String pengarang;
-        private  String sinopsis;
-        private  String tahunTerbit;
-        private  String isFavorit;
-
+    public static class Documents {
         public String get_id() {
             return _id;
         }
@@ -80,12 +70,33 @@ public class FavoriteResponseModel {
             this.tahunTerbit = tahunTerbit;
         }
 
-        public String getIsFavorit() {
-            return isFavorit;
+        public String getIsFavorite() {
+            return isFavorite;
         }
 
-        public void setIsFavorit(String isFavorit) {
-            this.isFavorit = isFavorit;
+        public void setIsFavorite(String isFavorite) {
+            this.isFavorite = isFavorite;
         }
+
+
+        private String _id;
+        private String genre;
+        private String judul;
+        private String penerbit;
+        private String pengarang;
+        private String sinopsis;
+        private String tahunTerbit;
+        private String isFavorite;
+
+
+        public String getGambar() {
+            return gambar;
+        }
+
+        public void setGambar(String gambar) {
+            this.gambar = gambar;
+        }
+
+        private String gambar;
     }
 }
